@@ -58,7 +58,7 @@ const MetricCard = ({label, value, color}) =>{
     return(
         <div style={{flex:1, padding:'14px 16px', border:'1px solid #2a2d3a',background:'#1a1d27', borderRadius:'8px'}}>
             <p style={{color:'#64748b'}}>{label} </p>
-            <p style={{fontSize:'24px', fontWeight:'500'}}>{value}</p>
+            <p style={{fontSize:'24px', fontWeight:'500', color:color}}>{value}</p>
         </div>
     );
 };
@@ -66,10 +66,10 @@ const MetricCard = ({label, value, color}) =>{
 function Metrics({totalThreats, critical, blocked, rate}){
     return(
         <div style={{display:'flex', alignItems:'center', gap:'10px'}}>
-            <MetricCard label="Total Threats" value={totalThreats} color="red"/>
-            <MetricCard label="Critical" value={critical} color="orange"/>
-            <MetricCard label="Blocked" value={blocked} color="green"/>
-            <MetricCard label="Detection Rate" value={rate} color="blue"/>
+            <MetricCard label="Total Threats" value={totalThreats} color="#E24B4A"/>
+            <MetricCard label="Critical" value={critical} color="#EF9F27"/>
+            <MetricCard label="Blocked" value={blocked} color="#639922"/>
+            <MetricCard label="Detection Rate" value={rate} color="#378ADD"/>
         </div>
     );
 }
