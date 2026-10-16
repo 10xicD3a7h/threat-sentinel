@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from engine.collector import Collector
 from engine.detector import Detector
 from engine.classifier import Classifier
+from engine.logger import Logger
 
 app = FastAPI()
 app.add_middleware(
@@ -20,6 +21,7 @@ async def websocket_endpoiint(ws: WebSocket):
     collector = Collector()
     detector = Detector()
     classifier = Classifier()
+    logger = Logger()
     while(True):
         events = collector.get_process_events()
         await ws.send_text(json.dumps({
@@ -32,6 +34,7 @@ async def websocket_endpoiint(ws: WebSocket):
 
             if check is not None:
                 threat = classifier.classify(event, check)
+                logger.log_threat(threat)
                 await ws.send_text(json.dumps({
                     'type': 'threat',
                     'data': threat

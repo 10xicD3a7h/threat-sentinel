@@ -34,4 +34,5 @@ backend/threats.db
 # Virtual environment
 venv/
 env/
+*.manus
 

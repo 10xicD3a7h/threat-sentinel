@@ -16,8 +16,5 @@ for event in events:
     match = detector.check_process(event)
     if match:
         threat = classifier.classify(event, match)
-        logger.log_threat(threat)
+        logger.log_threat(threat, "\n")
 
-#rows = logger.cursor.execute('SELECT * FROM threats LIMIT 5').fetchall()
-#for row in rows:
-#    print(row)
